@@ -1,9 +1,9 @@
 #!/bin/sh
-echo "lösche alle mov dateien"
+echo "delete mov files"
 find /import -name "*.mov" -type f -exec rm -rf {} \;
-echo "umbenennen der Dateien"
+echo "rename files"
 exiftool '-FileName<${DateTimeOriginal}%-c.%le' -d '%Y%m%d-%H%M%S' -r '/import'
-echo "setzten des Dateialters"
+echo "set time and date of files"
 exiftool '-FileModifyDate<${DateTimeOriginal}' -r '/Multimedia/FotoArchiv/import'
-echo "verschieben in Archiv"
+echo "move files"
 exiftool '-Directory<${DateTimeOriginal}' -d '/export/%Y/%m/%d' -r '/import'
