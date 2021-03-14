@@ -22,4 +22,10 @@ services:
     volumes:
       - import-vol:/import
       - export-vol:/export
+
     image: 'ehome/image2archive:latest'
+    environment:
+      BROKER_USER: 'myqtt-broker-user'
+      BROKER_PASS: 'mqtt-broker-passwd'
+      BROKER_IPADDR: 'broker ip-addr'
+      BROKER_PORT: 'broker port'
