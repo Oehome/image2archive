@@ -1,0 +1,25 @@
+version: '2'
+
+# The volume that you want to define for use int he containers.    
+volumes:    
+  import-vol: 
+    driver: local # Must be set to avoid issues.
+    driver_opts:
+      type: "nfs"
+      o: "addr=homenas.fritz.box,rsize=65536,wsize=65536,timeo=14,tcp,rw,noatime"
+      device: ":/Multimedia/FotoArchiv/testimport"
+
+  export-vol: 
+    driver: local # Must be set to avoid issues.
+    driver_opts:
+      type: "nfs"
+      o: "addr=homenas.fritz.box,rsize=65536,wsize=65536,timeo=14,tcp,rw,noatime"
+      device: ":/Multimedia/FotoArchiv/testexport"
+
+services:  
+  imageimport:
+    container_name: d-imageimport
+    volumes:
+      - import-vol:/import
+      - export-vol:/export
+    image: 'ehome/image2archive:latest'
