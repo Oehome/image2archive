@@ -26,6 +26,8 @@ def on_message(client, userdata, msg):
     if str(msg.payload.decode()) == "start":
        print(msg.payload.decode())
        client.publish(myname+"/todo", "null")
+       client.publish(myname+"/rc_txt", "import started")
+       client.publish(myname+"/rc_html", "import_started")
        value=run_exiftool()
        client.publish(myname+"/rc_txt", str(value))
        client.publish(myname+"/rc_html", textile.textile(str(value)))
