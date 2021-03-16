@@ -18,7 +18,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ehome/image2archive:latest
+          repository: ehome/image2archive
+          tag_with_ref: true
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
           
