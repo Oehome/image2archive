@@ -14,6 +14,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_PW }}
-          repository: Oehome/image2archive
+          repository: oehome/image2archive
           tag_with_ref: true
           
